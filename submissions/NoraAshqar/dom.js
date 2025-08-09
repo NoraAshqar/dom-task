@@ -9,20 +9,20 @@ console.log(nodesWithText-onlyElements);
 // childNodes contains all nodes (text+elements) but children contains only elements
 
 //2.
-const firstNode =body.firstChild;
+const firstNode =body.childNodes[0];
 console.log(firstNode.nodeType)
 console.log(firstNode.nodeName)
-const paragrah1 = body.lastElementChild.firstElementChild.firstElementChild;
-const paragrah2 =paragrah1.nextElementSibling;
-console.log(paragrah1.parentElement===paragrah2.parentElement)// yes they have the same parent then they are siblings
+const paragraph1 = body.lastElementChild.firstElementChild.firstElementChild;
+const paragraph2 =paragraph1.nextElementSibling;
+console.log(paragraph1.parentElement===paragraph2.parentElement)// yes they have the same parent then they are siblings
 
 //Twist
-console.log(body.firstChild)
-const header =body.firstElementChild;
-console.log(header.nextSibling)
-const main =header.nextElementSibling;
-const section =main.firstElementChild;
-console.log(section.nextSibling)
+body.childNodes.forEach(function(childN){
+    if(childN.nodeType===3)
+    {
+        console.log(childN)
+    }
+})
 // the text node exist because of the newline '\n'  in the HTML code 
 
 //Task 2: Synthetic DOM Injection
@@ -36,9 +36,9 @@ h2.textContent='Access Panel';
 const p =document.createElement('p');
 p.textContent='Authenticated';
 
-div.appendChild(h2);
-div.appendChild(p);
-body.appendChild(div);
+div.append(h2);
+div.append(p);
+document.body.append(div);
 
 console.log(div.dataset.role)
 p.textContent='Welcome back, Admin';
