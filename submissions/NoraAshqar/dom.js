@@ -18,7 +18,7 @@ console.log(paragraph1.parentElement===paragraph2.parentElement)// yes they have
 
 //Twist
 body.childNodes.forEach(function(childN){
-    if(childN.nodeType===3)
+    if(childN.nodeType===3 &&childN.textContent.trim()!="")
     {
         console.log(childN)
     }
